@@ -5,6 +5,7 @@ metadata:
   labels:
     app: hello
 spec:
+  replica: 2
   selector:
     matchLabels:
       app: hello
@@ -44,8 +45,8 @@ metadata:
   name: hello-web
   namespace: hello-web
 spec:
-  maxReplicas: 15
-  minReplicas: 10
+  maxReplicas: 4
+  minReplicas: 2
   scaleTargetRef:
     apiVersion: extensions/v1
     kind: Deployment
