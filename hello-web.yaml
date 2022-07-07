@@ -46,4 +46,8 @@ metadata:
 spec:
   maxReplicas: 15
   minReplicas: 10
+  scaleTargetRef:
+    apiVersion: extensions/v1
+    kind: Deployment
+    name: helloweb
   targetCPUUtilizationPercentage: 50
