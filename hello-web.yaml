@@ -23,15 +23,7 @@ spec:
         resources:
           requests:
             cpu: 1000m
-            memory: 1Gi
-      spec:
-        maxReplicas: 15
-        minReplicas: 10
-        targetCPUUtilizationPercentage: 1
-      spec:
-        replicas: 10
-      nodeSelector:
-          topology.kubernetes.io/zone: us-east-1a  
+            memory: 1Gi  
 ---
 apiVersion: v1
 kind: Service
@@ -44,3 +36,14 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  annotations:
+  name: hello-web
+  namespace: hello-web
+spec:
+  maxReplicas: 15
+  minReplicas: 10
+  targetCPUUtilizationPercentage: 50
