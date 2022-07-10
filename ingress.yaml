@@ -10,8 +10,9 @@ spec:
     - host: mongo.com
       http:
         paths:
-        - backend:
-            serviceName: mongo-express-service
-            servicePort: 8081
+        pathtype:
+          - backend:
+              serviceName: mongo-express-service
+              servicePort: 8081
 
 
